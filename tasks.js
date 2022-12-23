@@ -173,11 +173,11 @@ function check(text) {
   }
 }
 
-let taskss = ["[ ] buy ships","[✓]  get batata ","[✓] task1"]
-let fs = require("fs");
-let data = fs.readFileSync("database.json");
-let objList = JSON.parse(data);
-let taskss = objList["tasks"];
+// let taskss = ["[ ] buy ships","[✓]  get batata ","[✓] task1"]
+// let fs = require("fs");
+// let data = fs.readFileSync("database.json");
+// let objList = JSON.parse(data);
+// let taskss = objList["tasks"];
 
 function uncheck(text) {
   if (text === "uncheck\n") {
@@ -253,10 +253,27 @@ function list(){
  *
  * @returns {void}
  */
-function quit(){
-  console.log('Quitting now, goodbye!')
-  process.exit();
+// function quit(){
+//   console.log('Quitting now, goodbye!')
+//   process.exit();
+// }
+
+
+try {
+  let data = fs.readFileSync(savefile);
+  var listOb = JSON.parse(data);
 }
+catch (e) {
+  console.log(`Hello from JSON!`)
+}
+if (listOb !== undefined) {
+  tasks = listObject.list;
+} else {
+  listOb = { "list": [] }
+  tasks = listOb.list;
+}
+
+
 
 
 
