@@ -40,6 +40,9 @@ function onDataReceived(text) {
   else if(text === 'hello\n' || text.split(" ")[0] === "hello" ){
     hello(text);
   }
+  else if(text === 'list\n'){
+    list();
+  }
   else if(text === 'help\n'){
     help();
   }
@@ -89,7 +92,14 @@ function help(){
   console.log(helpp)
 }
 
+let tasks = ["task" , "task1"]
+function list(){
+  tasks.forEach((objects , i) => {
+    console.log(`${i +1} - [ ] ${objects}`)
+  
+  })
 
+}
 /**
  * Exits the application
  *
