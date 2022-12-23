@@ -74,8 +74,8 @@ function hello(text){
   text = text.replace('\n', '').trim();
   const typed = text.split(" ");
   if (typed[0] === "hello"){
-    const textt = typed.slice(1).join(" ");
-    console.log(`hello ${textt}!`);
+    const txt = typed.slice(1).join(" ");
+    console.log(`hello ${txt}!`);
     }
 }
 
