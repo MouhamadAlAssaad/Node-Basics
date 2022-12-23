@@ -46,6 +46,9 @@ function onDataReceived(text) {
   else if(text === 'help\n'){
     help();
   }
+  else if (text.startsWith('add')){
+    add(text);
+  }
   else{
     unknownCommand(text);
   }
@@ -81,6 +84,21 @@ function hello(text){
     console.log(`hello ${txt}!`);
     }
 }
+
+
+
+
+
+function add(obj){
+  obj=obj.trim().split(" ")[1]
+  if (obj==undefined){
+    console.log("please insert an object")
+  }
+  else{
+    tasks.push(obj)
+  }
+}
+
 
 /**
  * The help command gives you the commands used to help you
