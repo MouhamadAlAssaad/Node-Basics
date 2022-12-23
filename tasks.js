@@ -51,7 +51,11 @@ function onDataReceived(text) {
   }
   else if (text.startsWith('remove')){
     removeTask(text);
+  } 
+  else if (text.startsWith('edit')){
+    edit(text);
   }
+
   else{
     unknownCommand(text);
   }
@@ -119,6 +123,45 @@ function removeTask(obj) {
     }
   }
 }
+
+
+
+
+function edit(text){
+  if (text === "edit\n"){
+
+    console.log("error!");
+    return
+  }
+  text=  text.replace('\n',' ').trim();
+  const objects = text.split(' ');
+  if(objects [0] === 'edit'){
+    const b= objects.slice(1).join(' ');
+    if (b[0] > tasks.length){
+      console.log("Number doesn't exist")
+    }
+    else if (typeof Number(b[0]) === "number"  && b[1] === " ") {
+      tasks.splice(`${b[0] - 1}`, 1, b.slice(2));
+  }  else if (typeof a[0] === "string") {
+    tasks.splice(-1, 1, a)
+  }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * The help command gives you the commands used to help you in your code
  *
