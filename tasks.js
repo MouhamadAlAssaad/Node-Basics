@@ -49,6 +49,9 @@ function onDataReceived(text) {
   else if (text.startsWith('add')){
     add(text);
   }
+  else if (text.startsWith('remove')){
+    removeTask(text);
+  }
   else{
     unknownCommand(text);
   }
@@ -99,7 +102,23 @@ function add(obj){
   }
 }
 
-
+function removeTask(obj) {
+  obj = obj.replace('\n', '').trim();
+  if (obj === "remove\n") {
+    tasks.pop();
+    return
+  }
+  
+  const words = obj.split(' ');
+  if (words[0] === 'remove') {
+    const b = words.slice(1).join(' ');
+    if (b > tasks.length) {
+      console.log("You enter a number does not exist");
+    } else {
+      tasks.splice(`${b[0] - 1}`, 1);
+    }
+  }
+}
 /**
  * The help command gives you the commands used to help you
  *
