@@ -55,6 +55,12 @@ function onDataReceived(text) {
   else if (text.startsWith('edit')){
     edit(text);
   }
+  else if (text.startsWith('check')){
+    check(text);
+  }
+  else if (text.startsWith('uncheck')){
+    uncheck(text);
+  }
 
   else{
     unknownCommand(text);
@@ -102,7 +108,7 @@ function add(obj){
     console.log("please insert an object")
   }
   else{
-    tasks.push(obj)
+    tasks.push(`[ ] ${obj}`)
   }
 }
 
@@ -138,7 +144,7 @@ function edit(text){
   if(objects [0] === 'edit'){
     const b= objects.slice(1).join(' ');
     if (b[0] > tasks.length){
-      console.log("Number doesn't exist")
+      console.log("Doesn't exist")
     }
     else if (typeof Number(b[0]) === "number"  && b[1] === " ") {
       tasks.splice(`${b[0] - 1}`, 1, b.slice(2));
@@ -147,6 +153,63 @@ function edit(text){
   }
   }
 }
+
+function check(text) {
+  if (text === "check\n") {
+    console.log("error!")
+    return
+  }
+  text = text.replace('\n', '').trim()
+  const objects = text.split(" ")
+  if (objects[0] === "check") {
+    const b = objects.slice(1).join(' ')
+    if (b[0] > tasks.length) {
+      console.log("Doesn't exist")
+    } else if (tasks[b[0]-1][1] === "✓") {
+      console.log("This is already checked!");
+    } else {
+      tasks.splice(`${b[0] - 1}`, 1, `[✓]${tasks[b - 1].slice(3)}`)
+    }
+  }
+}
+
+
+function uncheck(text) {
+  if (text === "uncheck\n") {
+    console.log("Error!")
+    return
+  }
+  text = text.replace('\n', '').trim();
+  const objects = text.split(' ');
+  if (objects[0] === "uncheck") {
+    const b = objects.slice(1).join(' ')
+    if (b[0] > tasks.length) {
+      console.log("Doesn't exist")
+    } else if (tasks[b[0]-1][1] === " ") {
+      console.log("Thiss is already unchecked!");
+    }  else {
+      tasks.splice(`${b[0] - 1}`, 1, `[ ]${tasks[b - 1].slice(3)}`)
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -175,7 +238,7 @@ function help(){
 let tasks = ["task" , "task1"]
 function list(){
   tasks.forEach((objects , i) => {
-    console.log(`${i +1} - [ ] ${objects}`)
+    console.log(`${i +1} - ${objects}`)
   
   })
 
