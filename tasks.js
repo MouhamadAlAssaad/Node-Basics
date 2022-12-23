@@ -120,12 +120,12 @@ function removeTask(obj) {
   }
 }
 /**
- * The help command gives you the commands used to help you
+ * The help command gives you the commands used to help you in your code
  *
  * @returns {void}
  */
 function help(){
-  let helpp='hello for saying hello \n quit or exit to quit the application \n help to get the commands '
+  let helpp='hello for saying hello \n quit or exit to quit the application \n help to get the commands \n add to add new elements \n  remove and but the number of the items to remove items '
   console.log(helpp)
 }
 
