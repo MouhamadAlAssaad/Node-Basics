@@ -37,8 +37,8 @@ function onDataReceived(text) {
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
-  else if(text === 'hello\n'){
-    hello();
+  else if(text === 'hello\n' || text.split(" ")[0] === "hello" ){
+    hello(text);
   }
   else if(text === 'help\n'){
     help();
@@ -66,10 +66,18 @@ function unknownCommand(c){
  *
  * @returns {void}
  */
-function hello(){
-  console.log('hello!')
+function hello(text){
+  if (text === "hello\n"){
+    console.log("hello!");
+    return
+  }
+  text = text.replace('\n', '').trim();
+  const typed = text.split(" ");
+  if (typed[0] === "hello"){
+    const textt = typed.slice(1).join(" ");
+    console.log(`hello ${textt}!`);
+    }
 }
-
 
 /**
  * The help command gives you the commands used to help you
