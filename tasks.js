@@ -173,11 +173,11 @@ function check(text) {
   }
 }
 
-let tasks = ["[ ] buy ships","[✓]  get batata ","[✓] task1"]
+let taskss = ["[ ] buy ships","[✓]  get batata ","[✓] task1"]
 let fs = require("fs");
 let data = fs.readFileSync("database.json");
 let objList = JSON.parse(data);
-let tasks = objList["tasks"];
+let taskss = objList["tasks"];
 
 function uncheck(text) {
   if (text === "uncheck\n") {
