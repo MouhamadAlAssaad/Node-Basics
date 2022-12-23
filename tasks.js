@@ -142,8 +142,8 @@ function edit(text){
     }
     else if (typeof Number(b[0]) === "number"  && b[1] === " ") {
       tasks.splice(`${b[0] - 1}`, 1, b.slice(2));
-  }  else if (typeof a[0] === "string") {
-    tasks.splice(-1, 1, a)
+  }  else if (typeof b[0] === "string") {
+    tasks.splice(-1, 1, b)
   }
   }
 }
