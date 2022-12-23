@@ -71,7 +71,11 @@ function hello(){
 }
 
 
-
+/**
+ * The help command gives you the commands used to help you
+ *
+ * @returns {void}
+ */
 function help(){
   let helpp='hello for saying hello \n quit or exit to quit the application \n help to get the commands '
   console.log(helpp)
