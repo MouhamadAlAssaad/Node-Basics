@@ -173,6 +173,11 @@ function check(text) {
   }
 }
 
+let tasks = ["[ ] buy ships","[✓]  get batata ","[✓] task1"]
+let fs = require("fs");
+let data = fs.readFileSync("database.json");
+let objList = JSON.parse(data);
+let tasks = objList["tasks"];
 
 function uncheck(text) {
   if (text === "uncheck\n") {
@@ -253,5 +258,42 @@ function quit(){
   process.exit();
 }
 
+
+
+
+function quit() {
+  let fs = require("fs");
+  let data = JSON.stringify(objList);
+  try {
+    fs.writeFileSync("./database.json", data);
+    console.log(`Saving changes...`)
+  } catch (error) {
+    console.error(error);
+  }
+
+  console.log("Quitting now, goodbye!");
+  process.exit();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 // The following line starts the application
 startApp("Mouhamad Al Assaad")
+
+
+
+
+
+
+
+
